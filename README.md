@@ -1,0 +1,1 @@
+# coinslot-token
