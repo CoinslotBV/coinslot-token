@@ -121,12 +121,12 @@ contract Freezable is Administratable {
 }
 // token lockable contract
 contract TimeLockable is Administratable{
-    uint256 private constant ADVISOR_LOCKUP_STAGEONE_END     = 1576120492; // 2019.02.28 23.59.59 (UST)
-    uint256 private constant ADVISOR_LOCKUP_STAGETWO_END     = 1607656539; // 2020.02.28 23.59.59 (UST)
-    uint256 private constant TEAM_LOCKUP_STAGEONE_END        = 1576120492; // 2019.12.12 23.59.59 (UST)
-    uint256 private constant TEAM_LOCKUP_STAGETWO_END        = 1607656539; // 2020.12.12 23.59.59 (UST)
-    uint256 private constant TEAM_LOCKUP_STAGETHREE_END        = 1639192872; // 2021.12.12 23.59.59 (UST)
-    uint256 private constant PE_LOCKUP_END =  1552360944;  // 2019.02.12  23.59.59 (UST)
+    uint256 private constant ADVISOR_LOCKUP_STAGEONE_END     = 1576166400; // 2019.12.13 00.00.00 (UST)
+    uint256 private constant ADVISOR_LOCKUP_STAGETWO_END     = 1607788800; // 2020.12.13 00.00.00 (UST)
+    uint256 private constant TEAM_LOCKUP_STAGEONE_END        = 1576166400; // 2019.12.13 00.00.00 (UST)
+    uint256 private constant TEAM_LOCKUP_STAGETWO_END        = 1607788800; // 2020.12.13 00.00.00 (UST)
+    uint256 private constant TEAM_LOCKUP_STAGETHREE_END      = 1639324800; // 2021.12.13 00.00.00 (UST)
+    uint256 private constant PE_LOCKUP_END =  1552406400;  // 2019.03.13  00.00.00 (UST)
 
     mapping (address => uint256) public timelockedAccounts;
     event LockedFunds(address indexed target, uint256 timelocked);
@@ -142,28 +142,28 @@ contract TimeLockable is Administratable{
     function timeLockAdvisorStageOne(address _target) public onlySuperAdmins validateAddress(_target) {
         require(timelockedAccounts[_target] == 0);
         timelockedAccounts[_target] = ADVISOR_LOCKUP_STAGEONE_END;
-        emit LockedFunds(_target, ADVISOR_LOCKUP_END);
-
+        emit LockedFunds(_target, ADVISOR_LOCKUP_STAGEONE_END);
+    }
     function timeLockAdvisorStageTwo(address _target) public onlySuperAdmins validateAddress(_target) {
             require(timelockedAccounts[_target] == 0);
             timelockedAccounts[_target] = ADVISOR_LOCKUP_STAGETWO_END;
-            emit LockedFunds(_target, ADVISOR_LOCKUP_END);
+            emit LockedFunds(_target, ADVISOR_LOCKUP_STAGETWO_END);
         }
     //lock team
     function timeLockTeamStageOne(address _target) public onlySuperAdmins validateAddress(_target) {
         require(timelockedAccounts[_target] == 0);
         timelockedAccounts[_target] = TEAM_LOCKUP_STAGEONE_END;
-        emit LockedFunds(_target, TEAM_LOCKUP_END);
+        emit LockedFunds(_target, TEAM_LOCKUP_STAGEONE_END);
     }
     function timeLockTeamStageTwo(address _target) public onlySuperAdmins validateAddress(_target) {
         require(timelockedAccounts[_target] == 0);
         timelockedAccounts[_target] = TEAM_LOCKUP_STAGETWO_END;
-        emit LockedFunds(_target, TEAM_LOCKUP_END);
+        emit LockedFunds(_target, TEAM_LOCKUP_STAGETWO_END);
     }
     function timeLockTeamStageThree(address _target) public onlySuperAdmins validateAddress(_target) {
         require(timelockedAccounts[_target] == 0);
         timelockedAccounts[_target] = TEAM_LOCKUP_STAGETHREE_END;
-        emit LockedFunds(_target, TEAM_LOCKUP_END);
+        emit LockedFunds(_target, TEAM_LOCKUP_STAGETHREE_END);
     }
     //lock PE
     function timeLockPE(address _target) public onlySuperAdmins validateAddress(_target) {
