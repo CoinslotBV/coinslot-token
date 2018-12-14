@@ -504,12 +504,4 @@ contract Coinslot is ERC20Burnable, TimeLockable, Freezable
     {
         return super.decreaseAllowance(_spender, _subtractedValue);
     }
-    /**
-    * @dev Token Contract Emergency Drain
-    * @param _token - Token to drain
-    * @param _amount - Amount to drain
-    */
-    function emergencyERC20Drain( IERC20 _token, uint _amount ) public onlyOwner {
-        _token.transfer( owner(), _amount );
-    }
 }
